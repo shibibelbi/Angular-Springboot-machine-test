@@ -1,0 +1,75 @@
+<table class="table table-striped table-info">
+  <thead>
+    <!-- empId:number;
+        firstName:string;
+        lastName:string;
+        age:number;
+        gender:string;
+        address:string;
+        phoneNumber:number;
+        lId:number; -->
+    <tr>
+      <th>Employee ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+      <th>Login Id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employeeService.employees">
+      <td (click)="populateForm(employee)">
+        {{ employee.empId }}
+      </td>
+      <td>{{ employee.firstName }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td>{{ employee.age }}</td>
+      <td>{{ employee.gender }}</td>
+      <td>{{ employee.address }}</td>
+      <td>{{ employee.phoneNumber }}</td>
+      <td>{{ employee.lId }}</td>
+
+      <!-- <tr *ngFor="let patient of patientService.patient">
+          <td (click)="populateForm(patient)">
+            {{ patient.patientId }}
+          </td>
+          <td (click)="populateForm(patient)">{{ patient.patientName }}</td>
+          <td (click)="populateForm(patient)">{{ patient.age }}</td>
+          <td (click)="populateForm(patient)">{{ patient.mobileNumber }}</td>
+          <td (click)="populateForm(patient)">{{ patient.address }}</td>
+          <td (click)="populateForm(patient)">{{ patient.bloodGroup }}</td>
+          <td (click)="populateForm(patient)">{{ patient.gender }}</td> -->
+      <!-- <td (click)="populateForm(patient)">
+          {{ patient.dob | date: "dd-MM-yyyy" }}
+        </td> -->
+
+      <td>
+        <button class="btn btn-info" (click)="updatePatient(patient.patientId)">
+          EDIT
+        </button>
+      </td>
+      <!-- (click)="updatePatient(patient)" -->
+      <td>
+        <a routerLink="/employee">
+          <button class="fa fa-edit" (click)="populateForm(employee)"></button
+        ></a>
+      </td>
+
+      <td>
+        <!-- <button
+            class="btn btn-sm btn-outline-danger"
+            (click)="deletePatient(patient.patientId)"
+          >
+            X
+          </button> -->
+        <button
+          class="fa fa-trash-o"
+          (click)="confirmDelete(employee.empId)"
+        ></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

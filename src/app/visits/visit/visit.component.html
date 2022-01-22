@@ -1,0 +1,247 @@
+<form
+  name="visitForm"
+  #form="ngForm"
+  autocomplete="off"
+  (ngSubmit)="onSubmit(form)"
+>
+  <!--Visit id -->
+  <div class="form-group">
+    <input
+      type="text"
+      name="visitId"
+      [(ngModel)]="visitService.formData.visitId"
+    />
+  </div>
+
+  <!--Customer Name -->
+  <div class="form-group">
+    <label>Customer Name</label>
+    <input
+      name="customerName"
+      #customerName="ngModel"
+      [(ngModel)]="visitService.formData.customerName"
+      class="form-control"
+      place
+      holder="Enter Customer Name"
+      minlength="5"
+      maxlength="30"
+      required
+      [ngClass]="{ 'is-invalid': customerName.touched && customerName.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="customerName.touched && customerName.invalid"
+    >
+      <div *ngIf="customerName.errors.required">Customer Name is Required</div>
+    </div>
+  </div>
+
+  <!--Contact person -->
+  <div class="form-group">
+    <label>Contact Person</label>
+    <input
+      name="contactPerson"
+      #contactPerson="ngModel"
+      [(ngModel)]="visitService.formData.contactPerson"
+      class="form-control"
+      place
+      holder="Enter the Contact Person"
+      minlength="5"
+      maxlength="30"
+      required
+      [ngClass]="{
+        'is-invalid': contactPerson.touched && contactPerson.invalid
+      }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="contactPerson.touched && contactPerson.invalid"
+    >
+      <div *ngIf="contactPerson.errors.required">Customer Name is Required</div>
+    </div>
+  </div>
+
+  <!--Contact No -->
+  <div class="form-group">
+    <label>Contact Number</label>
+    <input
+      name="contactNo"
+      #contactNo="ngModel"
+      [(ngModel)]="visitService.formData.contactNo"
+      class="form-control"
+      place
+      holder="Enter Contact Number"
+      minlength="10"
+      [pattern]="mobNumberPattern"
+      required
+      [ngClass]="{ 'is-invalid': contactNo.touched && contactNo.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="contactNo.touched && contactNo.invalid"
+    >
+      <div *ngIf="contactNo.errors.required">Contact Number is Required</div>
+    </div>
+  </div>
+
+  <!--Interested Product -->
+  <div class="form-group">
+    <label>Interested Product</label>
+    <input
+      name="interestedProduct"
+      #interestedProduct="ngModel"
+      [(ngModel)]="visitService.formData.interestedProduct"
+      class="form-control"
+      place
+      holder="Enter the Contact Person"
+      minlength="5"
+      required
+      [ngClass]="{
+        'is-invalid': interestedProduct.touched && interestedProduct.invalid
+      }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="interestedProduct.touched && interestedProduct.invalid"
+    >
+      <div *ngIf="interestedProduct.errors.required">
+        InterestedProduct is Required
+      </div>
+    </div>
+  </div>
+
+  <!--Contact person -->
+  <div class="form-group">
+    <label>Visit Subject</label>
+    <input
+      name="visitSubject"
+      #visitSubject="ngModel"
+      [(ngModel)]="visitService.formData.visitSubject"
+      class="form-control"
+      place
+      holder="Enter the Contact Person"
+      minlength="5"
+      maxlength="30"
+      required
+      [ngClass]="{ 'is-invalid': visitSubject.touched && visitSubject.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="visitSubject.touched && visitSubject.invalid"
+    >
+      <div *ngIf="visitSubject.errors.required">Customer Name is Required</div>
+    </div>
+  </div>
+
+  <!--Description -->
+  <div class="form-group">
+    <label>Description</label>
+    <input
+      name="description"
+      #description="ngModel"
+      [(ngModel)]="visitService.formData.description"
+      class="form-control"
+      place
+      holder="Enter the Contact Person"
+      minlength="5"
+      maxlength="300"
+      [ngClass]="{ 'is-invalid': description.touched && description.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="description.touched && description.invalid"
+    ></div>
+  </div>
+
+  <!--Date-->
+  <div class="form-group">
+    <label>Visited Date and Time</label>
+    <input
+      type="date"
+      name="visitDateTime"
+      #visitDateTime="ngModel"
+      [(ngModel)]="visitService.formData.visitDateTime"
+      class="form-control"
+      place
+      holder="Enter the visitDateTime"
+      required
+      [ngClass]="{
+        'is-invalid': visitDateTime.touched && visitDateTime.invalid
+      }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="visitDateTime.touched && visitDateTime.invalid"
+    >
+      <div *ngIf="visitDateTime.errors.required">visitDateTime is Required</div>
+    </div>
+  </div>
+
+  <!--Is Disabled -->
+  <div class="form-group">
+    <label>Id Disabled </label>
+    <input
+      name="isDisabled"
+      #isDisabled="ngModel"
+      [(ngModel)]="visitService.formData.isDisabled"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': isDisabled.touched && isDisabled.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="isDisabled.touched && isDisabled.invalid"
+    >
+      <div *ngIf="isDisabled.errors.required">Mobile Number is required.</div>
+    </div>
+  </div>
+
+  <!--Is Deleted -->
+  <div class="form-group">
+    <label>Is Deleted </label>
+    <input
+      name="isDeleted"
+      #isDeleted="ngModel"
+      [(ngModel)]="visitService.formData.isDeleted"
+      class="form-control"
+      place
+      holder="Is Deleted"
+      [ngClass]="{ 'is-invalid': isDeleted.touched && isDeleted.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="isDeleted.touched && isDeleted.invalid"
+    >
+      <div *ngIf="isDeleted.errors.required">isDeleted is required</div>
+    </div>
+  </div>
+
+  <!--Employee Id-->
+  <div class="form-group">
+    <label>Employee Id</label>
+    <input
+      name="empId"
+      #empId="ngModel"
+      [(ngModel)]="visitService.formData.empId"
+      class="form-control"
+      place
+      holder="Enter the Employee Id"
+      maxlength="2"
+      required
+      [ngClass]="{ 'is-invalid': empId.touched && empId.invalid }"
+    />
+    <div class="validation-error" *ngIf="empId.touched && empId.invalid">
+      <div *ngIf="empId.errors.required">Employee Id is Required</div>
+    </div>
+  </div>
+
+  <!--Submit-->
+  <div class="form-group">
+    <button
+      type="submit"
+      [disabled]="!(form.valid && form.dirty)"
+      class="btn btn-lg btn-primary form-control"
+    >
+      SUBMIT
+    </button>
+  </div>
+</form>
